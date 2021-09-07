@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,35 +12,111 @@
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
 
     <!-- Load polyfills to support older browsers -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"
+        crossorigin="anonymous"></script>
 
     <!-- Load Vue followed by BootstrapVue -->
     <script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
     <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
 
     <!-- Load the following for BootstrapVueIcons support -->
-    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
 
+    <link rel="stylesheet" href="css/index.css">
     <script>Vue.config.devtools = true;</script>
     <title>リアル脱出ゲーム</title>
 </head>
+
 <body>
-    <div id="test" class="container">
-        <div class="row justify-content-between text-white">
-            <div class="col-2 bg-black m-3">{{ data }}</div>
-            <div class="col-2 bg-black m-3">{{ data }}</div>
-            <div class="col-2 bg-white m-3">{{ apple}}</div>
-            <div class="col-2 bg-black m-3">{{ apple }}</div>
+    <div class="firstview">
+        <img src="img/title-team.svg" class="title-team">
+        <div class="h-100 d-flex justify-content-center">
+            <img src="img/title.svg" class="h-100 w-100">
+        </div>
+        <br>
+        <p class="text-center" style="font-size: 50px;">↓</p>
+    </div>
+    <div id="main">
+        <div class="container-fluid text-center">
+            <div class="story text-center">
+                <p style="font-size: 24px;">
+                    どうやら給食のデザートを作る工場が乗っ取られてしまったらしい！<br>
+                    給食まであと1時間！それまでに工場を救ってデザートをとりもどすぞ！<br>
+                    うおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお<br>
+                </p>
+            </div>
+            <div class="env fw-bold">
+                <div class="d-flex justify-content-around">
+                    <div class="">
+                        <div class="h4">人数</div>
+                        <div class="kusodeka"> 2<span>人~</span></div>
+                    </div>
+                    <div class="">
+                        <div class="h4">PC</div>
+                        <div class="kusodeka"> 3<span>台</span></div>
+                    </div>
+                    <div class="">
+                        <div class="h4">時間</div>
+                        <div class="kusodeka"> 1<span>時間</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="rule">
+                <div class="h1 mx-auto mb-5">始める前に</div>
+                <div class="text-start">
+                    <div class="row setup">
+                        <div class="col-8">
+                            <div class="h3">グループ分けをしよう</div>
+                            <p>グループのファイ表がじゃんけんしてジャン勝ちグループ1、負けグループ2でよろ</p>
+                        </div>
+                        <div class="col-3 border">
+                            <img src="" alt="図">
+                        </div>
+                    </div>
+                    <div class="row setup">
+                        <div class="col-8">
+                            <div class="h3">話し合いができる場所へ</div>
+                            <p>会話しても迷惑かからない場所にしなね。</p>
+                            <p>紙とペンとかあったら尚よし。</p>
+                        </div>
+                        <div class="col-3 border">
+                            <img src="" alt="図">
+                        </div>
+                    </div>
+                    <div class="row setup">
+                        <div class="col-8">
+                            <div class="h3">別々のページへ移動</div>
+                            <p>3つのPCでそれぞれグループ1のページ、グループ2のページ、共通のページへ移動。共通画面と自分の画面は見ていいけど相手の画面は見てはいけません👺</p>
+                        </div>
+                        <div class="col-3 border">
+                            <img src="" alt="図">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btns">
+                <div class="h1 mx-auto mb-5">準備できたらボタン押してー</div>
+                <div class="d-flex justify-content-around">
+                    <a href="group1.html">グループ1のページ</a>
+                    <a href="group2.html">グループ2のページ</a>
+                    <a href="common.html">共通のページ</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer small">
+            <p>主催／企画制作<br>SCRAP × N・S高生</p>
+            <p>「リアル脱出ゲーム」は株式会社SCRAPの登録商標です。</p>
+            <p>produced by 学校法人角川ドワンゴ学園</p>
         </div>
     </div>
-<script>
-    new Vue({
-        el: '#test',
-        data: {
-            data: 'DevTool息してるよ〜',
-            apple: "りんごっぷる！",
-        }
-    })
-</script>
+    <script>
+        new Vue({
+            el: '#main',
+            data: {
+                data: 'Test',
+            }
+        })
+    </script>
 </body>
+
 </html>

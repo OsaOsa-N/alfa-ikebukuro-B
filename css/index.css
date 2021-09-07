@@ -1,0 +1,73 @@
+body{
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 20px;
+}
+#main{
+    margin-top: 90vh;
+}
+#main::before{
+    content: "";
+    display: block;
+    height: 15vh;
+    width: 100vw;
+    background: linear-gradient(rgba(255,255,255,0), 70%, white);
+}
+.container-fluid{
+    background: linear-gradient(white, 95%, rgb(255,194,228));
+    padding-bottom: 150px;
+}
+.container-fluid > div{
+    padding: 75px 0;
+    margin: 0 auto;
+    width: 70% !important;
+}
+.setup{
+    min-height: 150px;
+}
+.title-team{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 50%;
+}
+.firstview{
+    position: fixed;
+    top: 0;
+    z-index: -2;
+    height: 80vh;
+    width: 100%;
+}
+.kusodeka{
+    font-size: 128px;
+}
+.kusodeka>span{
+    font-size: 32px;
+}
+.setup{
+    margin: 50px 0px;
+    border-left: rgba(0, 0, 0, 0.3) solid 5px;
+    justify-content: space-between;
+}
+.btns a{
+    color: inherit;
+    text-decoration: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 20px;
+    width: 25%;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0px 5px rgb(255,194,228) ;
+}
+.btns a:active{
+    box-shadow: none;
+    transform: translateY(5px);
+}
+.footer{
+    color: white;
+    text-align: center;
+    padding: 40px 0 10px 0;
+    background-color: rgb(255,194,228);
+}

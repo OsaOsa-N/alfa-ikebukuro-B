@@ -21,22 +21,138 @@
 
     <!-- Load the following for BootstrapVueIcons support -->
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0ba569bf5f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/main.css">
-    <script>Vue.config.devtools = true;</script>
     <title>リアル脱出ゲーム|グループ1</title>
 </head>
+
 <body>
     <div id="main">
-        {{ data }}
+        <div v-if="form" class="stage">
+            <div class="h1">パスワードヲニュウリョク</div>
+            <input type="text" v-model="input">
+            <p v-if="failed">ちがうよー</p>
+            <a @click="auth()">アクセス！</a>
+        </div>
+
+        <div v-if="stage[0]['flag']" class="stage">
+            <div class="h1">資料0</div><br>
+            ↓あいことば↓
+            <div style="font-size: 80px;">○○○しょく</div><br>
+            <a @click="close(0)">資料を閉じる</a>
+        </div>
+
+        <div v-if="stage[1]['flag']" class="stage">
+            <div class="h1">資料1</div><br>
+            <div class="text-start m-auto w-75">
+                <p>１.　「ブーブー」となく動物　お肉としてよく食べられている</p>
+                <p>２.　ヨーロッパの真ん中にある国で首都はベルリン　ビールで有名</p>
+                <p>３.　「モーモー」と鳴く動物　お乳は飲んだり、料理に使われたりする</p>
+                <p>４.　じっくり見て、調査すること</p>
+                <p>６.　「昔」を二文字で表すと？</p>
+                <p>８.　アメリカのお隣さんの国で、有名料理はタコス</p>
+                <p>９.　詩を書いている人</p>
+                <p>10.　仏教を開いた人で、「お◯⚪︎◯さま」と呼ばれている</p>
+                <p>13.　「ある日　森の中　◯◯さんに出会った」</p>
+            </div>
+            <a @click="close(1)">資料を閉じる</a>
+        </div>
+
+        <div v-show="stage[2]['flag']" class="stage">
+            <div class="h1">資料2</div>
+            <img src="img/stage2-2.png" class="w-75">
+            <br>
+            <br>
+            <a @click="close(2)">資料を閉じる</a>
+        </div>
+
+        <div v-if="stage[3]['flag']" class="stage">
+            <div class="h1">資料3</div><br>
+            <img src="img/stage3-1.png" class="w-75">
+            <br>
+            <br>
+            <a @click="close(3)">資料を閉じる</a>
+        </div>
+
+        <div v-if="stage[4]['flag']" class="stage">
+            <div class="h1">資料4</div><br>
+            <img src="img/stage4-2.png" class="w-75">
+            <br>
+            <br>
+            <a @click="close(4)">資料を閉じる</a>
+        </div>
     </div>
     <script>
+        Vue.config.devtools = true;
+
         new Vue({
             el: '#main',
             data: {
-                data: 'Test',
+                input: "",
+                failed: false,
+                form: true,
+                stage: {
+                    0: {
+                        flag: false,
+                        password: "ひらけごま",
+                    },
+                    1: {
+                        flag: false,
+                        password: "いち",
+                    },
+                    2: {
+                        flag: false,
+                        password: "に",
+                    },
+                    3: {
+                        flag: false,
+                        password: "さん",
+                    },
+                    4: {
+                        flag: false,
+                        password: "よん",
+                    },
+                }
+            },
+            methods: {
+                close(index) {
+                    this.stage[index]['flag'] = false;
+                    this.form = true;
+                },
+                auth() {
+                    this.failed = false;
+                    input = this.input
+                    switch (input) {
+                        case this.stage[0]['password']:
+                            this.form = false;
+                            this.stage[0]['flag'] = true;
+                            break;
+                        case this.stage[1]['password']:
+                            this.form = false;
+                            this.stage[1]['flag'] = true;
+                            break;
+                        case this.stage[2]['password']:
+                            this.form = false;
+                            this.stage[2]['flag'] = true;
+                            break;
+                        case this.stage[3]['password']:
+                            this.form = false;
+                            this.stage[3]['flag'] = true;
+                            break;
+                        case this.stage[4]['password']:
+                            this.form = false;
+                            this.stage[4]['flag'] = true;
+                            break;
+
+                        default:
+                            this.failed = true;
+
+                    }
+                },
             }
         })
     </script>
 </body>
+
 </html>

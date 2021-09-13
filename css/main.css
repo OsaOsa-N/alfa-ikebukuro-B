@@ -116,7 +116,6 @@ a:active{
     display: flex;
 }
 .crossword td{
-    text-align: start;
     display: block;
     position: relative;
     width: 80px;
@@ -160,4 +159,10 @@ a:active{
 }
 .stage3 td{
     margin-right: 2px;
+}
+.bg-active{
+    background-color: #FFEFD9;
+}
+.group1 td{
+    cursor: pointer;
 }

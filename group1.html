@@ -21,22 +21,150 @@
 
     <!-- Load the following for BootstrapVueIcons support -->
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0ba569bf5f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/main.css">
-    <script>Vue.config.devtools = true;</script>
     <title>リアル脱出ゲーム|グループ1</title>
 </head>
+
 <body>
     <div id="main">
-        {{ data }}
+        <div v-if="form" class="stage">
+            <div class="h1">パスワードヲニュウリョク</div>
+            <input type="text" v-model="input">
+            <p v-if="failed">ちがうよー</p>
+            <a @click="auth()">アクセス！</a>
+        </div>
+
+        <div v-if="stage[0]['flag']" class="stage">
+            <div class="h1">資料0</div><br>
+            ↓あいことば↓
+            <div style="font-size: 80px;">きゅう○○○</div><br>
+            <a @click="close(0)">資料を閉じる</a>
+        </div>
+
+        <div v-if="stage[1]['flag']" class="stage">
+            <div class="h1">資料1</div><br>
+            <div class="text-start m-auto w-75">
+                <p>1.　紫や緑で、ワインの原料になる秋の果物</p>
+                <p>4.　渋いけど、干すと甘くなるオレンジ色の秋の果物</p>
+                <p>5.　外国からの大使がいる場所</p>
+                <p>6.　金属でできていて、飲み物が入っているもの</p>
+                <p>7.　少しだけ降ってる雨</p>
+                <p>11.　かぐや姫がやってきた場所</p>
+                <p>12.　鉄を引き寄せる力を持っていて、N極とS極がある</p>
+                <p>14.　おせちに入っていて、白やフチがピンクのものがある</p>
+            </div>
+            <a @click="close(1)">資料を閉じる</a>
+        </div>
+
+        <div v-if="stage[2]['flag']" class="stage">
+            <div class="h1">資料2</div><br>
+                <table>
+                    <tr>
+                        <td @click="toggleColor(0,0)" v-bind:class="{active: color[0][0]}"><input type="text" maxlength="1" readonly value=""></td>
+                        <td @click="toggleColor(0,1)" v-bind:class="{active: color[0][1]}"><input type="text" maxlength="1" readonly value=""></td>
+                        <td @click="toggleColor(0,2)" v-bind:class="{active: color[0][2]}"><input type="text" maxlength="1" readonly value=""></td>
+                        <td @click="toggleColor(0,3)" v-bind:class="{active: color[0][3]}"><input type="text" maxlength="1" readonly value=""></td>
+                        <td @click="toggleColor(0,4)" v-bind:class="{active: color[0][4]}"><input type="text" maxlength="1" readonly value=""></td>
+                        <td @click="toggleColor(0,5)" v-bind:class="{active: color[0][5]}"><input type="text" maxlength="1" readonly value=""></td>
+                    </tr>
+                </table>
+            <a @click="close(2)">資料を閉じる</a>
+        </div>
+
+        <div v-if="stage[3]['flag']" class="stage">
+            <div class="h1">資料3</div><br>
+            ↓あいことば↓
+            <div style="font-size: 80px;">きゅう○○○</div><br>
+            <a @click="close(3)">資料を閉じる</a>
+        </div>
+
+        <div v-if="stage[4]['flag']" class="stage">
+            <div class="h1">資料4</div><br>
+            ↓あいことば↓
+            <div style="font-size: 80px;">きゅう○○○</div><br>
+            <a @click="close(4)">資料を閉じる</a>
+        </div>
     </div>
     <script>
+        Vue.config.devtools = true;
+
         new Vue({
             el: '#main',
             data: {
-                data: 'Test',
+                input: "",
+                failed: false,
+                form: true,
+                color:[
+                    [false,false,false,false,false,false],
+                    [false,false,false,false,false,false],
+                    [false,false,false,false,false,false],
+                    [false,false,false,false,false,false],
+                    [false,false,false,false,false,false],
+                    [false,false,false,false,false,false],
+            ],
+                stage: {
+                    0: {
+                        flag: false,
+                        password: "ひらけごま",
+                    },
+                    1: {
+                        flag: false,
+                        password: "いち",
+                    },
+                    2: {
+                        flag: false,
+                        password: "に",
+                    },
+                    3: {
+                        flag: false,
+                        password: "さん",
+                    },
+                    4: {
+                        flag: false,
+                        password: "よん",
+                    },
+                }
+            },
+            methods: {
+                close(index) {
+                    this.stage[index]['flag'] = false;
+                    this.form = true;
+                },
+                auth() {
+                    this.failed = false;
+                    input = this.input
+                    switch (input) {
+                        case this.stage[0]['password']:
+                            this.form = false;
+                            this.stage[0]['flag'] = true;
+                            break;
+                        case this.stage[1]['password']:
+                            this.form = false;
+                            this.stage[1]['flag'] = true;
+                            break;
+                        case this.stage[2]['password']:
+                            this.form = false;
+                            this.stage[2]['flag'] = true;
+                            break;
+                        case this.stage[3]['password']:
+                            this.form = false;
+                            this.stage[3]['flag'] = true;
+                            break;
+                        case this.stage[4]['password']:
+                            this.form = false;
+                            this.stage[4]['flag'] = true;
+                            break;
+
+                        default:
+                            this.failed = true;
+
+                    }
+                }
             }
         })
     </script>
 </body>
+
 </html>

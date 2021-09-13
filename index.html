@@ -21,7 +21,8 @@
 
     <!-- Load the following for BootstrapVueIcons support -->
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0ba569bf5f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/index.css">
     <script>Vue.config.devtools = true;</script>
     <title>リアル脱出ゲーム</title>
@@ -30,7 +31,7 @@
 <body>
     <div class="firstview">
         <img src="img/title-team.svg" class="title-team">
-        <div class="h-100 d-flex justify-content-center">
+        <div class="h-75 d-flex justify-content-center">
             <img src="img/title.svg" class="h-100 w-100">
         </div>
         <br>
@@ -62,7 +63,7 @@
                 </div>
             </div>
             <div class="rule">
-                <div class="h1 mx-auto mb-5">始める前に</div>
+                <div class="h1 mx-auto mb-5">はじめる前に</div>
                 <div class="text-start">
                     <div class="row setup">
                         <div class="col-8">
@@ -97,16 +98,17 @@
             <div class="btns">
                 <div class="h1 mx-auto mb-5">準備できたらボタン押してー</div>
                 <div class="d-flex justify-content-around">
-                    <a href="group1.html">グループ1のページ</a>
-                    <a href="group2.html">グループ2のページ</a>
+                    <a href="group1.html">グループ1</a>
+                    <a href="group2.html">グループ2</a>
                     <a href="common.html">共通のページ</a>
                 </div>
             </div>
         </div>
-        <div class="footer small">
+        <div class="footer small overflow-hidden w-100">
+            <img src="img/splash_white.svg" style="transform: rotateZ(180deg); width: 101%;">
             <p>主催／企画制作<br>SCRAP × N・S高生</p>
             <p>「リアル脱出ゲーム」は株式会社SCRAPの登録商標です。</p>
-            <p>produced by 学校法人角川ドワンゴ学園</p>
+            <p class="mb-0">produced by 学校法人角川ドワンゴ学園</p>
         </div>
     </div>
     <script>

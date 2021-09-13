@@ -1,25 +1,21 @@
 body{
-    color: rgba(0, 0, 0, 0.7);
+    color: rgb(64,64,64);
     font-size: 20px;
+}
+.h3, .h1{
+    font-weight: bold;
 }
 #main{
     margin-top: 90vh;
-}
-#main::before{
-    content: "";
-    display: block;
-    height: 15vh;
-    width: 100vw;
-    background: linear-gradient(rgba(255,255,255,0), 70%, white);
+    padding-top: 15vh;
 }
 .container-fluid{
-    background: linear-gradient(white, 95%, rgb(255,194,228));
-    padding-bottom: 150px;
+    background-color:white;
+    padding: 0;
 }
 .container-fluid > div{
-    padding: 75px 0;
-    margin: 0 auto;
-    width: 70% !important;
+    padding: 75px 15%;
+    width: 100%;
 }
 .setup{
     min-height: 150px;
@@ -36,12 +32,17 @@ body{
     z-index: -2;
     height: 80vh;
     width: 100%;
+    height: 100vh;
+    background-color: rgb(255,194,228);
 }
 .kusodeka{
     font-size: 128px;
 }
 .kusodeka>span{
     font-size: 32px;
+}
+.rule{
+    background-color: #FFEFD9;
 }
 .setup{
     margin: 50px 0px;
@@ -50,24 +51,25 @@ body{
 }
 .btns a{
     color: inherit;
+    font-weight: bold;
     text-decoration: none;
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
+    background-color: #FFEFD9;
+    padding: 15px 20px;
+    border-radius: 30px;
     font-size: 20px;
     width: 25%;
     display: block;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0px 5px rgb(255,194,228) ;
+    box-shadow: 0px 3px rgb(168,155,153);
 }
 .btns a:active{
     box-shadow: none;
-    transform: translateY(5px);
+    transform: translateY(3px);
 }
 .footer{
     color: white;
     text-align: center;
-    padding: 40px 0 10px 0;
+    padding-bottom: 30px;
     background-color: rgb(255,194,228);
 }

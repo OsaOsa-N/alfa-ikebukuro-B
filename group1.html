@@ -30,7 +30,7 @@
 <body>
     <div id="main">
         <div v-if="form" class="stage">
-            <div class="h1">パスワードヲニュウリョク</div>
+            <div class="h1">資料の番号を入力しよう！</div>
             <input type="text" v-model="input">
             <p v-if="failed">ざんねん！もう一度考えてみよう！</p>
             <a @click="auth()">アクセス！</a>
@@ -45,7 +45,7 @@
 
         <div v-if="stage[1]['flag']" class="stage">
             <div class="h1">資料1</div><br>
-            <div class="text-start m-auto w-75">
+            <div class="text-start m-auto w-50">
                 <p>1.　紫や緑で、ワインの原料になる秋の果物</p>
                 <p>4.　渋いけど、干すと甘くなるオレンジ色の秋の果物</p>
                 <p>5.　外国からの大使がいる場所</p>
@@ -60,6 +60,7 @@
 
         <div v-show="stage[2]['flag']" class="stage">
             <div class="h1">資料2</div><br>
+            <p>マスをクリックすると色を変えられるよ！</p>
             <table class="crossword group1" style="font-size: 52px;">
                 <tr>
                     <td @click="toggle(0,0)" :class="{'bg-active':color[0][0]}">も</td>
@@ -123,7 +124,7 @@
 
         <div v-if="stage[4]['flag']" class="stage">
             <div class="h1">資料4</div><br>
-            <div class="text-start m-auto w-75">
+            <div class="text-start m-auto w-50">
                 <p>1.　世界最小の種子植物</p>
                 <p>2.　日本の流域面積6位の川</p>
                 <p>3.　日本の標高3mの山</p>
@@ -155,23 +156,23 @@
                 stage: {
                     0: {
                         flag: false,
-                        password: "ひらけごま",
+                        password: "じょうぎ",
                     },
                     1: {
                         flag: false,
-                        password: "いち",
+                        password: "えんぴつ",
                     },
                     2: {
                         flag: false,
-                        password: "に",
+                        password: "けしごむ",
                     },
                     3: {
                         flag: false,
-                        password: "さん",
+                        password: "ふでばこ",
                     },
                     4: {
                         flag: false,
-                        password: "よん",
+                        password: "こんぱす",
                     },
                 }
             },

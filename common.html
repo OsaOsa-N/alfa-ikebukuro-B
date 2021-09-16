@@ -38,30 +38,104 @@
                 <span class="material-icons-outlined">help_outline</span>
                 <p>ヒント</p>
             </div>
+            <div @click="toggle('item','memo')">
+                <span class="material-icons-outlined">border_color</span>
+                <p>メモ</p>
+            </div>
         </div>
         <div v-if="stage['item']['map']" class="item">
             <div>
                 <span class="material-icons-outlined clear" @click="close('item','map')">clear</span>
-                レシピを決める→材料を集める→生産ラインで調理
-                <br>
-                パスワード「ひらけごま」
+                <img src="img/nagare_1.png" v-if="stage[0]['flag']" class="w-100">
+                <img src="img/nagare_2.png" v-if="stage[1]['flag']" class="w-100">
+                <img src="img/nagare_3.png" v-if="stage[2]['flag']" class="w-100">
+                <img src="img/nagare_4.png" v-if="stage[3]['flag'] || stage[4]['flag'] || stage[5]['flag']" class="w-100">
             </div>
         </div>
         <div v-if="stage['item']['hint']" class="item">
             <div>
-                <span class="material-icons-outlined clear" @click="close('item','hint')">clear</span>
-                ひんと
+                <div class="hint-window">
+                    <span class="material-icons-outlined clear" @click="close('item','hint')">clear</span>
+                    <div class="hint-header">
+                        ヒントを聞く
+                    </div>
+                    <div class="hint-main">
+                        <div>
+                            <div class="player-speek">
+                                {{ player_message }}
+                            </div>
+                            <div class="game-speek" v-if="message != ''">
+                                {{ message }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hint-footer">
+                        <a @click="backHint()" v-if="message != '' ||hint_toggle['hint1']"
+                            class="back-hint">&#60;&#60;戻る</a>
+                        <div>
+                            <button @click="toggle('hint','hint1')"
+                                v-if="!hint_toggle['hint1'] && stage[1]['flag'] ||!hint_toggle['hint1'] &&  stage[2]['flag'] ||!hint_toggle['hint1'] && stage[3]['flag'] ||!hint_toggle['hint1'] &&  stage[4]['flag'] || !hint_toggle['hint1'] && stage[5]['flag']">ステージ1</button>
+                            <button class="sm" @click="hint(11)" v-if="hint_toggle['hint1']">1問目</button>
+                            <button class="sm" @click="hint(12)" v-if="hint_toggle['hint1']">2問目</button>
+                            <button class="sm" @click="hint(13)" v-if="hint_toggle['hint1']">3問目</button>
+                            <button class="sm" @click="hint(14)" v-if="hint_toggle['hint1']">4問目</button>
+                            <button class="sm" @click="hint(15)" v-if="hint_toggle['hint1']">5問目</button>
+                            <button class="sm" @click="hint(16)" v-if="hint_toggle['hint1']">6問目</button>
+                            <button class="sm" @click="hint(17)" v-if="hint_toggle['hint1']">7問目</button>
+                            <button class="sm" @click="hint(18)" v-if="hint_toggle['hint1']">8問目</button>
+                            <button class="sm" @click="hint(19)" v-if="hint_toggle['hint1']">9問目</button>
+                            <button class="sm" @click="hint(110)" v-if="hint_toggle['hint1']">10問目</button>
+                            <button class="sm" @click="hint(111)" v-if="hint_toggle['hint1']">11問目</button>
+                            <button class="sm" @click="hint(112)" v-if="hint_toggle['hint1']">12問目</button>
+                            <button class="sm" @click="hint(113)" v-if="hint_toggle['hint1']">13問目</button>
+                            <button class="sm" @click="hint(114)" v-if="hint_toggle['hint1']">14問目</button>
+                            <button @click="hint(2)"
+                                v-if="!hint_toggle['hint1'] && stage[2]['flag'] || !hint_toggle['hint1'] && stage[3]['flag'] || !hint_toggle['hint1'] && stage[4]['flag'] || !hint_toggle['hint1'] && stage[5]['flag']">ステージ2</button>
+                            <button @click="hint(3)"
+                                v-if="!hint_toggle['hint1'] && stage[3]['flag'] || !hint_toggle['hint1'] && stage[4]['flag'] || !hint_toggle['hint1'] && stage[5]['flag']">ステージ3</button>
+                            <button @click="hint(4)" v-if="!hint_toggle['hint1'] && stage[4]['flag'] || !hint_toggle['hint1'] && stage[5]['flag']">ステージ4</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="stage['item']['memo']" class="item">
+            <div>
+                <div class="memo-window">
+                    <span class="material-icons-outlined clear" @click="close('item','memo')">clear</span>
+                    <textarea class="w-100 h-75" placeholder="メモを書こう！" v-model="memo"></textarea>
+                </div>
             </div>
         </div>
 
         <div v-if="stage[0]['flag']" class="stage">
-            <div>
+            <div v-if="!stage[0]['tutorial']">
+                <p>あと1時間で給食の時間！今日はデザートが出るからとても楽しみだ</p>
+                <p>...誰かからメールが届いたようだ</p>
+                <a @click="toggle('0','mail')" v-if="!stage[0]['mail']">メールをひらく</a>
+                <div v-if="stage[0]['mail']" class="text-start w-50 mx-auto border border-dark my-5 p-3 rounded-3">
+                    <p>親愛なるみんなへ</p>
+                    <p>
+                        とつぜんだが、君たちが楽しみにしていた給食のゼリーは私がいただいた。<br>
+                        もしもゼリーを返して欲しければ、ゼリー工場を再起動させたまえ。<br>
+                        だが、残された時間は少ない。タイムリミットは1時間後の給食の時間までだ。<br>
+                        チームで力を合わせて私の謎を解いてみたまえ。
+                    </p>
+                    <p>ゼリー泥棒より</p>
+                </div>
+                <div v-if="stage[0]['mail']">
+                    <p>ゼリーを取り返すため、工場を再起動しよう！</p>
+                    <a @click="toggle('0','tutorial')">ゲームを始める</a>
+                </div>
+            </div>
+            <div v-if="stage[0]['tutorial']">
                 <div class="h1">工場にアクセス！</div>
                 <p>まずはそれぞれのグループの画面で資料にアクセスしよう</p>
                 <p>パスワードは工場の流れ図に記されているぞ！</p>
+                <a @click="toggle('0','message')" v-if="!stage[0]['message']">資料を表示できたら</a>
             </div>
-            <a @click="toggle('0','mail')" v-if="!stage[0]['mail']">資料を表示できたら</a>
-            <div v-if="stage[0]['mail']" class="mt-5">
+            <div v-if="stage[0]['message']" class="mt-5">
                 <p>それぞれの画面に映し出される言葉を組み合わせたあいことばを入れよう</p>
                 <input type="text" v-model="stage[0]['input']">
                 <p v-if="stage[0]['failed']">ざんねん！もう一度考えてみよう！</p>
@@ -78,7 +152,7 @@
         <div v-if="stage[1]['flag']" class="stage">
             <div class="h1">ステージ1</div>
             <p>まずはレシピを取り戻すために謎を解いてパスワードを導き出そう！</p>
-            <p>それぞれの資料は「いち」と入力したら見ることができるよ!</p>
+            <p>資料のパスワードは流れ図に記されているよ!</p>
             <p>クロスワードには文字を入れられるぞ！グループ1は横のかぎ、グループ2はたてのかぎ。</p>
             <div class="crossword">
                 <table>
@@ -146,6 +220,7 @@
                     <div style="background-color: rgb(238,204,205);"><input type="text" maxlength="1"></div>
                 </div>
             </div>
+            <p>マスをクリックして文字を入力できるよ</p>
             <input type="text" v-model="stage[1]['input']">
             <p v-if="stage[1]['failed']">ざんねん！もう一度考えてみよう！</p>
             <a @click="auth(1)">アクセス！</a>
@@ -160,7 +235,7 @@
         <div v-if="stage[2]['flag']" class="stage">
             <div class="h1">ステージ2</div>
             <p>材料を手に入れるために冷蔵庫のロックを解除しよう！</p>
-            <p>それぞれの資料は「に」と入力したら見ることができるよ!</p>
+            <p>資料のパスワードは流れ図に記されているよ!</p>
             <p>グループ2は書いてあるものの名前をグループ1に教えてあげよう！</p>
             <p>グループ1は教えてもらったものの名前をクリックしてぬりつぶしていこう！</p>
             <p>最後までのこった文字がパスワードだよ</p>
@@ -171,19 +246,28 @@
                 <div class="h2">ステージクリア！</div>
                 <p>れいぞうこを開けることができた！</p>
                 <p>ゼリーの材料を選ぼう！</p>
-                <div class="d-flex justify-content-around">
-                    <div>ぶどう</div>
-                    <div>りんご</div>
-                    <div>おれんじ</div>
+                <div class="d-flex justify-content-around fruit-flex">
+                    <div class="fruit" @click="fruit('ぶどう')">
+                        <img src="img/grape.png" alt="" 　class="w-100">
+                        <p>ぶどう</p>
+                    </div>
+                    <div class="fruit" @click="fruit('りんご')">
+                        <img src="img/apple.png" alt="" 　class="w-100">
+                        <p>りんご</p>
+                    </div>
+                    <div class="fruit" @click="fruit('おれんじ')">
+                        <img src="img/orange.png" alt="" 　class="w-100">
+                        <p>おれんじ</p>
+                    </div>
                 </div>
-                <a @click="goNext(2)">次のステージへ</a>
+                <a @click="goNext(2)">{{ fruit_message }}</a>
             </div>
         </div>
 
         <div v-if="stage[3]['flag']" class="stage">
             <div class="h1">ステージ3</div>
             <p>乗っ取られているゼリーの生産ラインを復旧しよう！</p>
-            <p>それぞれの資料は「さん」と入力したら見ることができるよ!</p>
+            <p>資料のパスワードは流れ図に記されているよ!</p>
             <p>グループ1とグループ2の絵には違うところが4つあるよ。協力して発見しよう！</p>
             <div class="crossword stage3">
                 <table>
@@ -222,6 +306,7 @@
                     <div style="background-color: rgb(211,225,241);"><input type="text" maxlength="1"></div>
                 </div>
             </div>
+            <p>マスをクリックして文字を入力できるよ</p>
             <div>
                 <input type="text" v-model="stage[3]['input']">
                 <p v-if="stage[3]['failed']">ざんねん！もう一度考えてみよう！</p>
@@ -242,7 +327,7 @@
             <div v-if="stage[4]['mail']">
                 ふふふ、ざんねん。本当に生産ラインが動きだすのは私の正体がわかってからだ<br>
                 最後の問題を解いて私の正体を当ててみたまえ<br>
-                それぞれの資料は「よん」と入力したら見ることができる<br>
+                それぞれの資料は「こんぱす」と入力したら見ることができる<br>
                 グループ1はGoogleで検索してその答えをグループ2に教えたまえ<br>
                 グループ2は教えてもらった言葉をメモ欄に書いて、記号に当てはめてみたまえ<br>
                 <img src="img/stage4-common.png" class="w-75">
@@ -259,37 +344,35 @@
         </div>
 
         <div v-if="stage[5]['flag']" class="stage">
-            -2時間前-<br>
-            おや、校長室で給食を一人で食べてる人がいる<br>
-            校長先生だ。<br>
-            校長「うーん、食べ終わってお腹いっぱいになったけど何か物足りないなぁ、<br>
-            生徒の様子を見に行くとしよう」<br>
-            生徒たちが食べている様子を見に来た校長先生　<br>
-            生徒にバレないようにこっそりと教室をのぞきます。<br>
-            校長「あれ、同じ給食を食べているはずなのに、どうしてあんなに美味しそうだし、楽しそうなんだろう...<br>
-            いいなぁ....みんなばっかりずるい...　そうだ、デザートを食べられなくしてやろう！」<br>
-            みんなからデザートを奪うことにした校長先生。<br>
-            デザート工場をのっとり、みんなのデザートをうばってしまいます。<br>
-            校長「うーん、ただみんなが大好きなデザートを奪うのはちょっとかわいそうだな..<br>
-            もし私からの謎を解ければデザート工場を解放することにしよう!」<br>
-            工場を解放できるようにいくつかの謎を仕掛けた校長<br>
-            校長「私の謎は難しいぞ！解けるものなら解いてみろ！」<br>
-            しかし校長の力作の謎たちは生徒たちにあっさりと解かれてしまいます。<br>
-            正体がばれてしまった校長は、ふかい悲しみに包まれるのでした。<br>
-            悲しみに暮れる校長先生に声をかける生徒たち。<br>
-            生徒「校長先生、給食はねみんなで食べるからおいしいし、楽しいんだよ。<br>
-            そうだ、作ったゼリーを先生も一緒に食べてみようよ！」<br>
-            校長「でも私はみんなにひどいことをしてしまった...ごめんなさい...」<br>
-            生徒「謝ってくれたし、もう大丈夫だよ！一緒に食べよう！」<br>
-            生徒たちと一緒にゼリーを食べる校長先生<br>
-            校長「本当だ！すごくおいしい！」<br>
-            校長先生の顔に笑顔が広がります<br>
-            生徒「校長先生は忙しいから、いつも一緒に食べるのは難しいけど、寂しいときは一緒に食べようよ！」<br>
-            校長「いいのかい...?ありがとう！！」<br>
-            こうして校長先生はお腹だけでなく、心も幸せでいっぱいになったのでした。<br>
-            おしまい<br>
-            <br>
-            ゲームクリア！<br>
+            <p class="my-2">-2時間前-</p>
+            <p>おや、校長室で給食を一人で食べてる人がいる<br>
+            校長先生だ。</p>
+            <p>校長「うーん、食べ終わってお腹いっぱいになったけど何か物足りないなぁ、<br>
+            生徒の様子を見に行くとしよう。」</p>
+            <p>生徒たちが食べている様子を見に来た校長先生　<br>
+            生徒にバレないようにこっそりと教室をのぞきます。</p>
+            <p>校長「あれ、同じ給食を食べているはずなのに、どうしてあんなに美味しそうだし、楽しそうなんだろう...<br>
+            いいなぁ....みんなばっかりずるい...　そうだ、デザートを食べられなくしてやろう！」</p>
+            <p>みんなからデザートを奪うことにした校長先生。<br>
+                デザート工場をのっとり、みんなのデザートをうばってしまいます。</p>
+            <p>校長「うーん、ただみんなが大好きなデザートを奪うのはちょっとかわいそうだな..<br>
+                もし私からの謎を解ければデザート工場を解放することにしよう!」</p>
+            <p>工場を解放できるようにいくつかの謎を仕掛けた校長</p>
+            <p>校長「私の謎は難しいぞ！解けるものなら解いてみろ！」</p>
+            <p>しかし校長の力作の謎たちは生徒たちにあっさりと解かれてしまいます。<br>
+                正体がばれてしまった校長は、ふかい悲しみに包まれるのでした。</p>
+            <p>悲しみに暮れる校長先生に声をかける生徒たち。</p>
+            <p>生徒「校長先生、給食はねみんなで食べるからおいしいし、楽しいんだよ。<br>
+                そうだ、作ったゼリーを先生も一緒に食べてみようよ！」</p>
+            <p>校長「でも私はみんなにひどいことをしてしまった...ごめんなさい...」</p>
+            <p>生徒「謝ってくれたし、もう大丈夫だよ！一緒に食べよう！」</p>
+            <p>生徒たちと一緒にゼリーを食べる校長先生</p>
+            <p>校長「本当だ！すごくおいしい！」</p>
+            <p>校長先生の顔に笑顔が広がります</p>
+            <p>生徒「校長先生は忙しいから、いつも一緒に食べるのは難しいけど、寂しいときは一緒に食べようよ！」</p>
+            <p>校長「いいのかい...?ありがとう！！」</p>
+            <p>こうして校長先生はお腹だけでなく、心も幸せでいっぱいになったのでした。</p>
+            <div class="h2 my-5">おしまい。</div>
         </div>
     </div>
     <script>
@@ -298,10 +381,19 @@
         new Vue({
             el: '#main',
             data: {
+                fruit_name: '',
+                fruit_message: '材料を決めよう！',
+                player_message: 'なにを聞こう...',
+                memo: '',
+                message: '',
+                hint_toggle: {
+                    hint1: false,
+                },
                 stage: {
                     item: {
                         map: false,
                         hint: false,
+                        memo: false,
                     },
                     0: {
                         //てんぷら↓↓
@@ -312,7 +404,9 @@
                         success: false,
 
                         //開けたりしたいやつ↓↓
+                        tutorial: false,
                         mail: false,
+                        message: false,
                     },
                     1: {
                         flag: false,
@@ -355,7 +449,16 @@
             },
             methods: {
                 toggle(index, data) {
-                    this.stage[index][data] = !this.stage[index][data];
+                    if (index == 'hint') {
+                        this.hint_toggle[data] = !this.hint_toggle[data];
+                    } else if (index == 'item') {
+                        this.stage['item']['map'] = false;
+                        this.stage['item']['hint'] = false;
+                        this.stage['item']['memo'] = false;
+                        this.stage['item'][data] = !this.stage['item'][data];
+                    } else {
+                        this.stage[index][data] = !this.stage[index][data];
+                    }
                 },
                 close(index, data) {
                     this.stage[index][data] = false;
@@ -369,8 +472,62 @@
                     }
                 },
                 goNext(index) {
+                    if (index == 2 && this.fruit_name == '') {
+                        return;
+                    }
                     this.stage[index]['flag'] = false;
                     this.stage[index + 1]['flag'] = true;
+                },
+                fruit(name) {
+                    this.fruit_name = name;
+                    this.fruit_message = name + 'に決めた！'
+                },
+                backHint() {
+                    this.message = '';
+                    this.player_message = 'なにを聞こう...';
+                    this.hint_toggle['hint1'] = false;
+                },
+                hint(num) {
+                    switch (num) {
+                        case 11:
+                            this.message = '1問目は横は「ぶどう」、縦は「ぶた」だよ';
+                            break; case 12:
+                            this.message = '2問目は「ドイツ」だよ';
+                            break; case 13:
+                            this.message = '3問目は「ウシ」だよ';
+                            break; case 14:
+                            this.message = '4問目は「かき」だよ';
+                            break; case 15:
+                            this.message = '5問目は「たいしかん」だよ';
+                            break; case 16:
+                            this.message = '6問目は「かこ」だよ';
+                            break; case 17:
+                            this.message = '7問目は「こさめ」だよ';
+                            break; case 18:
+                            this.message = '8問目は「メキシコ」だよ';
+                            break; case 19:
+                            this.message = '9問目は「しじん」だよ';
+                            break; case 110:
+                            this.message = '10問目は「しゃか」だよ';
+                            break; case 111:
+                            this.message = '11問目は「つき」だよ';
+                            break; case 112:
+                            this.message = '12問目は「じしゃく」だよ';
+                            break; case 113:
+                            this.message = '13問目は「くま」だよ';
+                            break; case 114:
+                            this.message = '14問目は「かまぼこ」だよ';
+                            break;
+                        case 2:
+                            this.message = '最後まで残る文字は3文字だよ';
+                            break;
+                        case 3:
+                            this.message = '間違いは上半分に1つ、下半分に3つあるよ';
+                            break;
+                        case 4:
+                            this.message = '同じ記号には同じ文字が入るよ';
+                            break;
+                    }
                 }
             }
         })

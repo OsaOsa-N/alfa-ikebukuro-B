@@ -1,40 +1,56 @@
 @font-face {
-	font-family: 'MochiyPop';
-	src: url(../fonts/mochiypop/MochiyPop-E.ttf);
+    font-family: 'MochiyPop';
+    src: url(../fonts/mochiypop/MochiyPop-E.ttf);
 }
 
-body{
+body {
     display: flex;
+    align-items: center;
     justify-content: center;
+    min-height: 100vh;
     font-size: 20px;
     text-align: center;
     padding-bottom: 10px;
+    background-color: rgba(252, 251, 250, 0.5);
 }
-#main{
+
+#main {
     width: 100%;
     max-width: 1440px;
+    padding-bottom: 200px;
 }
-.header{
+
+.header {
     height: 70px;
     width: 100vw;
-    background-color: grey;
     font-size: 14px;
     position: fixed;
+    top: 30px;
+    left: 0;
     display: flex;
     font-weight: bold;
     justify-content: center;
     z-index: 10;
 }
-.header div{
+
+.header div {
     display: block;
-    margin: 0px 20px;
+    margin: 0px 80px;
+    width: 100px;
+    height: 100px;
+    padding-top: 15px;
+    border-radius: 50%;
+    color: white;
     line-height: 1;
     cursor: pointer;
+    background-color: rgb(255, 194, 228);
 }
-.header span{
+
+.header span {
     font-size: 48px;
 }
-.item{
+
+.item {
     height: 100vh;
     width: 100vw;
     background-color: rgba(255, 255, 255, 0.5);
@@ -46,20 +62,26 @@ body{
     left: 0;
     z-index: 5;
 }
-.clear{
-    font-size: 48px;
+
+.clear {
+    font-size: 60px;
     color: black;
     position: absolute;
-    top: -60px;
+    top: 0;
     left: 0;
     cursor: pointer;
+    z-index: 10;
 }
-.item div{
-    background-color: white;
+
+.item>div {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 80%;
 }
-input{
+
+input {
     display: block;
     font-size: 50px;
     border: black 3px solid;
@@ -67,25 +89,29 @@ input{
     margin: 30px auto;
     font-weight: bold;
 }
-.stage{
-    margin-top: 150px;
+
+.stage {
+    padding-top: 180px;
 }
-.success{
+
+.success {
     height: 100vh;
-    padding-top: 150px;
+    padding-top: 300px;
     width: 100vw;
     background-color: white;
     position: fixed;
-    top: 70px;
+    top: 0;
     left: 0;
     z-index: 4;
 }
-.h3, .h2, .h1{
+
+.h3, .h2, .h1 {
     font-weight: bold;
     padding-bottom: 20px;
     font-family: MochiyPop;
 }
-.stage a{
+
+.stage a {
     color: inherit;
     font-weight: bold;
     text-decoration: none;
@@ -98,31 +124,37 @@ input{
     display: block;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0px 3px rgb(168,155,153);
+    box-shadow: 0px 3px rgb(168, 155, 153);
 }
-a:active{
+
+a:active {
     box-shadow: none;
     transform: translateY(3px);
 }
-.crossword{
+
+.crossword {
     display: flex;
     justify-content: space-around;
 }
-.crossword table{
+
+.crossword table {
     margin: 30px;
     border: black solid 1px;
 }
-.crossword tr{
+
+.crossword tr {
     display: flex;
 }
-.crossword td{
+
+.crossword td {
     display: block;
     position: relative;
     width: 80px;
     height: 80px;
     border: solid black 1px;
 }
-.crossword input{
+
+.crossword input {
     border: none;
     width: 100%;
     height: 100%;
@@ -132,37 +164,168 @@ a:active{
     display: block;
     background: none;
 }
-.crossword span{
+
+.crossword span {
     position: absolute;
     top: 5px;
     left: 5px;
 }
-.crossword > div{
+
+.crossword>div {
     margin: 30px;
     margin-top: auto;
     display: flex;
     align-items: flex-end;
 }
-.crossword >div div{
+
+.crossword>div div {
     width: 85px;
     height: 85px;
     border: solid black 1px;
 }
-.crossword > div input{
+
+.crossword>div input {
     font-size: 60px;
 }
-.stage3 > table{
+
+.stage3>table {
     border: none;
 }
-.stage3 tr{
+
+.stage3 tr {
     margin-bottom: 10px;
 }
-.stage3 td{
+
+.stage3 td {
     margin-right: 2px;
 }
-.bg-active{
+
+.bg-active {
     background-color: #FFEFD9;
 }
-.group1 td{
+
+.group1 td {
     cursor: pointer;
+}
+
+.hint-window {
+    position: relative;
+    height: 700px;
+    width: 400px;
+    padding-top: 70px;
+    padding-bottom: 250px;
+    border: solid 1px rgba(0, 0, 0, 0.5);
+    background-color: rgb(160, 184, 223);
+    border-radius: 10px;
+}
+
+.hint-header {
+    height: 60px;
+    font-weight: bold;
+    width: 100%;
+    font-size: 26px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    top: 0;
+    left: 0;
+}
+
+.hint-footer {
+    background-color: white;
+    height: 250px;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 45px;
+    bottom: 0;
+    left: 0;
+}
+
+.hint-footer>div {
+    width: 100%;
+}
+
+.hint-footer button {
+    width: 40%;
+    background-color: white;
+    border: solid rgba(0, 0, 0, 0.5) 0.5px;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.hint-footer .sm {
+    width: 21%;
+    padding: 5px 7px;
+}
+
+.hint-main {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+}
+
+.hint-main>div {
+    width: 100%;
+}
+
+.player-speek {
+    background-color: rgb(141, 226, 134);
+    display: block;
+    width: 70%;
+    padding: 5px 15px;
+    text-align: end;
+    margin-left: auto;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 50px 0 50px 50px;
+}
+
+.game-speek {
+    background-color: white;
+    display: block;
+    width: 70%;
+    padding: 5px 15px;
+    text-align: start;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-right: auto;
+    border-radius: 0 50px 50px 50px;
+}
+
+.back-hint {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    color: black;
+    text-decoration: none;
+}
+
+.memo-window {
+    position: relative;
+    padding-top: 70px;
+    width: 60vw;
+    height: 50vh;
+}
+
+.memo-window textarea {
+    font-size: 24px;
+    resize: none;
+    border: solid 2px gray;
+    border-radius: 5px;
+}
+
+.fruit-flex{
+    padding: 50px;
+}
+
+.fruit{
+    width: 15%;
 }

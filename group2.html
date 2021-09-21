@@ -30,7 +30,7 @@
 <body>
     <div id="main">
         <div v-if="form" class="stage">
-            <div class="h1">資料の番号を入力しよう！</div>
+            <div class="h1">資料のパスワードを入力しよう！</div>
             <input type="text" v-model="input">
             <p v-if="failed">ざんねん！もう一度考えてみよう！</p>
             <a @click="auth()">アクセス！</a>
@@ -69,7 +69,7 @@
 
         <div v-if="stage[3]['flag']" class="stage">
             <div class="h1">資料3</div><br>
-            <img src="img/stage3-1.png" class="w-75">
+            <img src="img/stage3-2.png" class="w-75">
             <br>
             <br>
             <a @click="close(3)">資料を閉じる</a>

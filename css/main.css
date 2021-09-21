@@ -13,6 +13,9 @@ body {
     padding-bottom: 10px;
     background-color: rgba(252, 251, 250, 0.5);
 }
+img{
+    z-index: 1;
+}
 
 #main {
     width: 100%;
@@ -22,7 +25,7 @@ body {
 
 .header {
     height: 70px;
-    width: 100vw;
+    width: 100%;
     font-size: 14px;
     position: fixed;
     top: 30px;
@@ -34,6 +37,7 @@ body {
 }
 
 .header div {
+    box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.5);
     display: block;
     margin: 0px 80px;
     width: 100px;
@@ -51,13 +55,12 @@ body {
 }
 
 .item {
-    height: 100vh;
     width: 100vw;
     background-color: rgba(255, 255, 255, 0.5);
     display: flex;
     justify-content: center;
-    align-items: center;
     position: fixed;
+    padding-top: 150px;
     top: 0;
     left: 0;
     z-index: 5;
@@ -70,7 +73,7 @@ body {
     top: 0;
     left: 0;
     cursor: pointer;
-    z-index: 10;
+    z-index: 11;
 }
 
 .item>div {
@@ -78,7 +81,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 75%;
 }
 
 input {
@@ -92,12 +95,15 @@ input {
 
 .stage {
     padding-top: 180px;
+    padding-bottom: 50px;
 }
 
 .success {
     height: 100vh;
-    padding-top: 300px;
+    padding-top: 180px;
+    padding-bottom: 50px;
     width: 100vw;
+    overflow-y: scroll;
     background-color: white;
     position: fixed;
     top: 0;
@@ -210,16 +216,17 @@ a:active {
 
 .hint-window {
     position: relative;
-    height: 700px;
+    height: 70vh;
     width: 400px;
     padding-top: 70px;
     padding-bottom: 250px;
-    border: solid 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.5);
     background-color: rgb(160, 184, 223);
     border-radius: 10px;
 }
 
 .hint-header {
+    border-radius: 10px 10px 0 0;
     height: 60px;
     font-weight: bold;
     width: 100%;
@@ -235,8 +242,9 @@ a:active {
 }
 
 .hint-footer {
+    border-radius: 0 0 10px 10px;
     background-color: white;
-    height: 250px;
+    min-height: 100px;
     width: 100%;
     position: absolute;
     display: flex;
@@ -327,5 +335,12 @@ a:active {
 }
 
 .fruit{
-    width: 15%;
+    width: 20%;
+    height: 170px;
+    box-shadow: 0px 3px 10px -1px rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+}
+.fruit:active{
+    box-shadow: none;
+    transform: translateY(3px);
 }

@@ -46,10 +46,10 @@
         <div v-if="stage['item']['map']" class="item">
             <div>
                 <span class="material-icons-outlined clear" @click="close('item','map')">clear</span>
-                <img src="img/nagare_1.png" v-if="stage[0]['flag']" class="w-100">
-                <img src="img/nagare_2.png" v-if="stage[1]['flag']" class="w-100">
-                <img src="img/nagare_3.png" v-if="stage[2]['flag']" class="w-100">
-                <img src="img/nagare_4.png" v-if="stage[3]['flag'] || stage[4]['flag'] || stage[5]['flag']" class="w-100">
+                <img src="img/nagare-1.png" v-if="stage[0]['flag']" class="w-100">
+                <img src="img/nagare-2.png" v-if="stage[1]['flag']" class="w-100">
+                <img src="img/nagare-3.png" v-if="stage[2]['flag']" class="w-100">
+                <img src="img/nagare-4.png" v-if="stage[3]['flag'] || stage[4]['flag'] || stage[5]['flag']" class="w-100">
             </div>
         </div>
         <div v-if="stage['item']['hint']" class="item">
@@ -112,7 +112,7 @@
         <div v-if="stage[0]['flag']" class="stage">
             <div v-if="!stage[0]['tutorial']">
                 <p>あと1時間で給食の時間！今日はデザートが出るからとても楽しみだ</p>
-                <p>...誰かからメールが届いたようだ</p>
+                <p>...だれかからメールが届いたようだ</p>
                 <a @click="toggle('0','mail')" v-if="!stage[0]['mail']">メールをひらく</a>
                 <div v-if="stage[0]['mail']" class="text-start w-50 mx-auto border border-dark my-5 p-3 rounded-3">
                     <p>親愛なるみんなへ</p>
@@ -132,7 +132,7 @@
             <div v-if="stage[0]['tutorial']">
                 <div class="h1">工場にアクセス！</div>
                 <p>まずはそれぞれのグループの画面で資料にアクセスしよう</p>
-                <p>パスワードは工場の流れ図に記されているぞ！</p>
+                <p>資料のパスワードは工場の流れ図に記されているぞ！</p>
                 <a @click="toggle('0','message')" v-if="!stage[0]['message']">資料を表示できたら</a>
             </div>
             <div v-if="stage[0]['message']" class="mt-5">
@@ -248,15 +248,15 @@
                 <p>ゼリーの材料を選ぼう！</p>
                 <div class="d-flex justify-content-around fruit-flex">
                     <div class="fruit" @click="fruit('ぶどう')">
-                        <img src="img/grape.png" alt="" 　class="w-100">
+                        <img src="img/grape.png" alt="" class="h-75">
                         <p>ぶどう</p>
                     </div>
                     <div class="fruit" @click="fruit('りんご')">
-                        <img src="img/apple.png" alt="" 　class="w-100">
+                        <img src="img/apple.png" alt="" class="h-75">
                         <p>りんご</p>
                     </div>
                     <div class="fruit" @click="fruit('おれんじ')">
-                        <img src="img/orange.png" alt="" 　class="w-100">
+                        <img src="img/orange.png" alt="" class="h-75">
                         <p>おれんじ</p>
                     </div>
                 </div>
@@ -312,7 +312,8 @@
                 <p v-if="stage[3]['failed']">ざんねん！もう一度考えてみよう！</p>
                 <a @click="auth(3)">アクセス！</a>
                 <div v-if="stage[3]['success']" class="success">
-                    <p>正解！</p>
+                    <div class="h2">ステージクリア！</div>
+                    <p>生産ラインを復旧させた！</p>
                     <a @click="goNext(3)">次へ</a>
                 </div>
             </div>
@@ -325,11 +326,20 @@
             <p>...だれかからメールがきた！</p>
             <a @click="toggle(4,'mail')" v-if="!stage[4]['mail']">メールをひらく</a>
             <div v-if="stage[4]['mail']">
-                ふふふ、ざんねん。本当に生産ラインが動きだすのは私の正体がわかってからだ<br>
-                最後の問題を解いて私の正体を当ててみたまえ<br>
-                それぞれの資料は「こんぱす」と入力したら見ることができる<br>
-                グループ1はGoogleで検索してその答えをグループ2に教えたまえ<br>
-                グループ2は教えてもらった言葉をメモ欄に書いて、記号に当てはめてみたまえ<br>
+                <div class="text-start w-50 mx-auto border border-dark my-5 p-3 rounded-3">
+                    <p>親愛なるみんなへ</p>
+                    <p>
+                        ふふふ、ざんねん。本当に生産ラインが動きだすのは私の正体がわかってからだ<br>
+                        最後の問題を解いて私の正体を当ててみたまえ
+                    </p>
+                    <p>
+                        それぞれの資料は「こんぱす」と入力したら見ることができる
+                    </p>
+                    <p>
+                        グループ1はGoogleで検索してその答えをグループ2に教えたまえ<br>
+                        グループ2は教えてもらった言葉をメモに書いて、記号に当てはめてみたまえ
+                    </p>
+                </div>
                 <img src="img/stage4-common.png" class="w-75">
                 <br>
                 <input type="text" v-model="stage[4]['input']">
@@ -452,10 +462,13 @@
                     if (index == 'hint') {
                         this.hint_toggle[data] = !this.hint_toggle[data];
                     } else if (index == 'item') {
-                        this.stage['item']['map'] = false;
-                        this.stage['item']['hint'] = false;
-                        this.stage['item']['memo'] = false;
+                        for(const k in this.stage['item']){
+                            if(k == data){
                         this.stage['item'][data] = !this.stage['item'][data];
+                            }else{
+                                this.stage['item'][k] = false;
+                            }
+                        }
                     } else {
                         this.stage[index][data] = !this.stage[index][data];
                     }

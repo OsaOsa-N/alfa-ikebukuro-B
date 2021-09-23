@@ -20,7 +20,6 @@ img{
 #main {
     width: 100%;
     max-width: 1440px;
-    padding-bottom: 200px;
 }
 
 .header {
@@ -220,7 +219,7 @@ a:active {
     height: 70vh;
     width: 400px;
     padding-top: 70px;
-    padding-bottom: 250px;
+    padding-bottom: 100px;
     box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.5);
     background-color: rgb(160, 184, 223);
     border-radius: 10px;
@@ -248,25 +247,26 @@ a:active {
     min-height: 100px;
     width: 100%;
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 45px;
     bottom: 0;
     left: 0;
 }
 
 .hint-footer>div {
     width: 100%;
+    margin-top: 30px;
 }
 
 .hint-footer button {
-    width: 40%;
-    background-color: white;
-    border: solid rgba(0, 0, 0, 0.5) 0.5px;
+    background-color: #FFEFD9;
+    border: none;
+    box-shadow: 0px 3px rgb(168, 155, 153);
     border-radius: 20px;
     padding: 5px 10px;
     margin: 5px;
+}
+.hint-footer button:active{
+    box-shadow: none;
+    transform: translateY(3px);
 }
 
 .hint-footer .sm {
@@ -282,9 +282,12 @@ a:active {
 
 .hint-main>div {
     width: 100%;
+    max-height: 100%;
+    overflow-y: scroll;
+    font-size: 16px;
 }
 
-.player-speek {
+.player-speak {
     background-color: rgb(141, 226, 134);
     display: block;
     width: 70%;
@@ -292,18 +295,18 @@ a:active {
     text-align: end;
     margin-left: auto;
     margin-right: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     border-radius: 50px 0 50px 50px;
 }
 
-.game-speek {
+.game-speak {
     background-color: white;
     display: block;
     width: 70%;
     padding: 5px 15px;
     text-align: start;
     margin-left: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     margin-right: auto;
     border-radius: 0 50px 50px 50px;
 }
@@ -344,4 +347,12 @@ a:active {
 .fruit:active{
     box-shadow: none;
     transform: translateY(3px);
+}
+.ending{
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.8;
+}
+.ending p{
+    padding-bottom: 20px;
 }

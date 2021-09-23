@@ -13,9 +13,6 @@ body{
     padding: 75px 15%;
     width: 100%;
 }
-.setup{
-    min-height: 150px;
-}
 .title-team{
     position: absolute;
     right: 0;
@@ -41,6 +38,7 @@ body{
     margin: 50px 0px;
     border-left: rgba(0, 0, 0, 0.3) solid 5px;
     justify-content: space-between;
+    min-height: 200px;
 }
 .btns a{
     color: inherit;

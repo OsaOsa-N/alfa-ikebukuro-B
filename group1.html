@@ -61,7 +61,7 @@
         <div v-show="stage[2]['flag']" class="stage">
             <div class="h1">資料2</div><br>
             <p>マスをクリックすると色を変えられるよ！</p>
-            <table class="crossword group1" style="font-size: 52px;">
+            <table class="crossword group1" style="font-size: 52px; user-select: none;">
                 <tr>
                     <td @click="toggle(0,0)" :class="{'bg-active':color[0][0]}">も</td>
                     <td @click="toggle(0,1)" :class="{'bg-active':color[0][1]}">あ</td>

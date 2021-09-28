@@ -92,6 +92,9 @@ input {
     margin: 30px auto;
     font-weight: bold;
 }
+input::placeholder{
+    font-size: 30px;
+}
 
 .stage {
     padding-top: 180px;
@@ -100,8 +103,9 @@ input {
 
 .success {
     height: 100vh;
-    padding-top: 180px;
-    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     overflow-y: scroll;
     background-color: white;
@@ -109,6 +113,9 @@ input {
     top: 0;
     left: 0;
     z-index: 4;
+}
+.success > div{
+    width: 100vw;
 }
 
 .h3, .h2, .h1 {
@@ -352,7 +359,51 @@ a:active {
     font-size: 28px;
     font-weight: bold;
     line-height: 1.8;
+    margin: 0 10%;
+    padding-top: 180px;
+    padding-bottom: 25vh;
+    min-height: 100vh;
 }
-.ending p{
-    padding-bottom: 20px;
+.ending > div{
+    padding-bottom: 30px;
+}
+.teacher{
+    position: relative;
+    text-align: start;
+    margin-left: 5%;
+}
+.teacher::before{
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    left: -30px;
+    border: 15px solid #FFEFD9;
+    border-top: 15px solid transparent;
+    border-left: 15px solid transparent;
+}
+.teacher > p{
+    display: inline-block;
+    padding: 20px;
+    border-radius: 30px 30px 30px 0;
+    background-color: #FFEFD9;
+}
+.student{
+    position: relative;
+    text-align: end;
+    margin-right: 5%;
+}
+.student::before{
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    right: -30px;
+    border: 15px solid #FFEFD9;
+    border-top: 15px solid transparent;
+    border-right: 15px solid transparent;
+}
+.student > p{
+    display: inline-block;
+    padding: 20px;
+    border-radius: 30px 30px 0 30px ;
+    background-color: #FFEFD9;
 }

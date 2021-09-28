@@ -28,10 +28,11 @@
 </head>
 
 <body>
+    <div class="position-fixed top-0 start-0 h2 m-3 opacity-75">グループ2</div>
     <div id="main">
         <div v-if="form" class="stage">
             <div class="h1">共通画面の流れ図にあるパスワードを入力しよう！</div>
-            <input type="text" v-model="input">
+            <input type="text" v-model="input" placeholder="ひらがなで入れてね">
             <p v-if="failed">ざんねん！もう一度考えてみよう！</p>
             <a @click="auth()">アクセス！</a>
         </div>

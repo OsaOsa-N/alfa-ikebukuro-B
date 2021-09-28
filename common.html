@@ -69,32 +69,32 @@
                         <div>
                         <p v-if="stage[0]['flag']">まだ聞くことがないよ！</p>
                         <button @click="hint_toggle[1] = !hint_toggle[1]; hint(10)"
-                            v-if="!hint_toggle[1] && stage[1]['flag']">ステージ1のヒントを聞く！</button>
+                            v-if="!hint_toggle[1] && stage[1]['flag']">ステージ１のヒントを聞く！</button>
                         <button v-on:click.self="hint(Number(hint_stage1))" v-if="hint_toggle[1] && stage[1]['flag']">
                             <select v-model="hint_stage1" class="d-inline">
-                                <option value='11'>1問目</option>
-                                <option value='12'>2問目</option>
-                                <option value='13'>3問目</option>
-                                <option value='14'>4問目</option>
-                                <option value='15'>5問目</option>
-                                <option value='16'>6問目</option>
-                                <option value='17'>7問目</option>
-                                <option value='18'>8問目</option>
-                                <option value='19'>9問目</option>
-                                <option value='110'>10問目</option>
-                                <option value='111'>11問目</option>
-                                <option value='112'>12問目</option>
-                                <option value='113'>13問目</option>
-                                <option value='114'>14問目</option>
+                                <option value='11'>１問目</option>
+                                <option value='12'>２問目</option>
+                                <option value='13'>３問目</option>
+                                <option value='14'>４問目</option>
+                                <option value='15'>５問目</option>
+                                <option value='16'>６問目</option>
+                                <option value='17'>７問目</option>
+                                <option value='18'>８問目</option>
+                                <option value='19'>９問目</option>
+                                <option value='110'>１０問目</option>
+                                <option value='111'>１１問目</option>
+                                <option value='112'>１２問目</option>
+                                <option value='113'>１３問目</option>
+                                <option value='114'>１４問目</option>
                             </select>
                             の答えを聞く！
                         </button>
                         <button @click="hint_toggle[2] = !hint_toggle[2]; hint(2)" v-if="!hint_toggle[2] && stage[2]['flag']">ステージ2のヒントを聞く！</button>
-                        <button @click="hint(21)" v-if="hint_toggle[2] && stage[2]['flag']">ステージ2の答えを聞く！</button>
+                        <button @click="hint(21)" v-if="hint_toggle[2] && stage[2]['flag']">ステージ２の答えを聞く！</button>
                         <button @click="hint_toggle[3] = !hint_toggle[3]; hint(3)" v-if="!hint_toggle[3] && stage[3]['flag']">ステージ3のヒントを聞く！</button>
-                        <button @click="hint(31)" v-if="hint_toggle[3] && stage[3]['flag']">ステージ3の答えを聞く！</button>
+                        <button @click="hint(31)" v-if="hint_toggle[3] && stage[3]['flag']">ステージ３の答えを聞く！</button>
                         <button @click="hint_toggle[4] = !hint_toggle[4]; hint(4)" v-if="!hint_toggle[4] && stage[4]['flag']">ステージ4のヒントを聞く！</button>
-                        <button @click="hint(41)" v-if="hint_toggle[4] && stage[4]['flag']">ステージ4の答えを聞く！</button>
+                        <button @click="hint(41)" v-if="hint_toggle[4] && stage[4]['flag']">ステージ４の答えを聞く！</button>
 
                     </div>
                 </div>
@@ -113,7 +113,7 @@
     <div v-if="stage[0]['flag']" class="stage">
         <div v-if="!stage[0]['tutorial']">
             <p>あと1時間で給食の時間！今日はデザートが出る日だからとても楽しみだ！</p>
-            <p>...だれかからメールがとどいたみたい</p>
+            <p>...だれかからメールがとどいたみたい。</p>
             <a @click="toggle('0','mail')" v-if="!stage[0]['mail']">メールをひらく</a>
             <div v-if="stage[0]['mail']" class="text-start w-50 mx-auto border border-dark my-5 p-3 rounded-3">
                 <p>親愛なるみんなへ</p>
@@ -133,12 +133,12 @@
         </div>
         <div v-if="stage[0]['tutorial']">
             <div class="h1">工場にアクセス！</div>
-            <p>まずはそれぞれのグループの画面で資料にアクセスしよう</p>
+            <p>まずはそれぞれのグループの画面で資料にアクセスしよう！</p>
             <p>資料のパスワードは工場の流れ図に記されているぞ！</p>
             <a @click="toggle('0','message')" v-if="!stage[0]['message']">資料を見ることができたら</a>
         </div>
         <div v-if="stage[0]['message']" class="mt-5">
-            <p>それぞれの画面の言葉を組み合わせてあいことばを入れよう</p>
+            <p>それぞれの画面の言葉を組み合わせてあいことばを入れよう！</p>
             <input type="text" v-model="stage[0]['input']">
             <p v-if="stage[0]['failed']">ざんねん！もう一度考えてみよう！</p>
             <a @click="auth(0)">アクセス！</a>
@@ -152,10 +152,10 @@
     </div>
 
     <div v-if="stage[1]['flag']" class="stage">
-        <div class="h1">ステージ1</div>
-        <p>まずはレシピを取りもどそう！ために謎を解いてパスワードをみちびき出そう！</p>
-        <p>資料のパスワードは流れ図に記されているよ!</p>
-        <p>クロスワードには文字を入れられるぞ！グループ1は横のかぎ、グループ2はたてのかぎ。</p>
+        <div class="h1">ステージ１</div>
+        <p>まずはレシピを取りもどそう！レシピを確認するために謎を解いてパスワードをみちびき出そう！</p>
+        <p>資料のパスワードは流れ図に記されているよ！</p>
+        <p>クロスワードには文字を入れられるぞ！グループ１は横のかぎ、グループ２はたてのかぎ。</p>
         <div class="crossword">
             <table>
                 <tr>
@@ -235,10 +235,10 @@
     </div>
 
     <div v-if="stage[2]['flag']" class="stage">
-        <div class="h1">ステージ2</div>
-        <p>次はゼリーの材料を集めよう！しかし、材料の入っているれいぞうこにはかぎがかかっているようだ!</p>
+        <div class="h1">ステージ２</div>
+        <p>次はゼリーの材料を集めよう！しかし、材料の入っているれいぞうこにはかぎがかかっているようだ！</p>
         <p>材料を手に入れるためにれいぞうこのかぎを開けよう！</p>
-        <p>資料のパスワードは流れ図に記されているよ!</p>
+        <p>資料のパスワードは流れ図に記されているよ！</p>
         <p>グループ2は書いてあるものの名前をグループ1に教えてあげよう！</p>
         <p>グループ1は教えてもらったものの名前をクリックしてぬりつぶしていこう！</p>
         <p>最後までのこった文字がパスワードだよ</p>
@@ -268,10 +268,10 @@
     </div>
 
     <div v-if="stage[3]['flag']" class="stage">
-        <div class="h1">ステージ3</div>
+        <div class="h1">ステージ３</div>
         <p>乗っ取られているゼリーの生産ラインを直そう！</p>
-        <p>資料のパスワードは流れ図に記されているよ!</p>
-        <p>グループ1とグループ2の絵をくらべるとまちがいが4つあるよ。協力して発見しよう！</p>
+        <p>資料のパスワードは流れ図に記されているよ！</p>
+        <p>グループ１とグループ２の絵をくらべるとまちがいが４つあるよ。協力して発見しよう</p>
         <div class="crossword stage3">
             <table>
                 <tr>
@@ -309,7 +309,7 @@
                 <div style="background-color: rgb(211,225,241);"><input type="text" maxlength="1"></div>
             </div>
         </div>
-        <p>マスをクリックして文字を入力できるよ</p>
+        <p>マスをクリックして文字を入力できるよ！</p>
         <div>
             <input type="text" v-model="stage[3]['input']">
             <p v-if="stage[3]['failed']">ざんねん！もう一度考えてみよう！</p>
@@ -323,7 +323,7 @@
     </div>
 
     <div v-if="stage[4]['flag']" class="stage">
-        <div class="h1">ステージ4</div>
+        <div class="h1">ステージ４</div>
         <p>これでゼリーがつくれるはずだ！</p>
         <p>あれ？全ての謎をといたはずなのに動かないぞ？？</p>
         <p>...だれかからメールがきた！</p>
@@ -332,15 +332,15 @@
             <div class="text-start w-50 mx-auto border border-dark my-5 p-3 rounded-3">
                 <p>親愛なるみんなへ</p>
                 <p>
-                    ふふふ、ざんねん。本当に生産ラインが動きだすのは私の正体がわかってからだ<br>
-                    最後の問題を解いて私の正体を当ててみたまえ
+                    ふふふ、ざんねん。本当に生産ラインが動きだすのは私の正体がわかってからだ。<br>
+                    最後の問題を解いて私の正体を当ててみたまえ。
                 </p>
                 <p>
-                    それぞれの資料は「こんぱす」と入力したら見ることができる
+                    それぞれの資料は「こんぱす」と入力したら見ることができる。
                 </p>
                 <p>
-                    グループ1はGoogleで検索してその答えをグループ2に教えたまえ<br>
-                    グループ2は教えてもらった言葉をメモに書いて、記号に当てはめてみたまえ
+                    グループ1はGoogleで検索してその答えをグループ2に教えたまえ。<br>
+                    グループ2は教えてもらった言葉をメモに書いて、記号に当てはめてみたまえ。
                 </p>
             </div>
             <img src="img/stage4-common.png" class="w-75">
@@ -349,7 +349,7 @@
             <p v-if="stage[4]['failed']">ざんねん！もう一度考えてみよう！</p>
             <a @click="auth(4)">アクセス！</a>
             <div v-if="stage[4]['success']" class="success">
-                <p>なんと...どろぼうは校長だった!</p>
+                <p>なんと...どろぼうは校長だった！</p>
                 <a @click="goNext(4)" href="#main">どうしてこんなことを？</a>
             </div>
         </div>
@@ -369,11 +369,11 @@
             どうしてあんなに美味しそうだし、楽しそうなんだろう...<br>
             いいなぁ....みんなばっかりずるい...<br>
             そうだ、デザートを食べられなくしてやろう！」</p>
-        <p>-2時間前-</p>
+        <p>-２時間前-</p>
         <p>みんなからデザートをうばうことにした校長先生。<br>
             デザート工場をのっとり、みんなのデザートをうばってしまいます。</p>
         <p>校長「うーん、ただみんなが大好きなデザートをうばうのはちょっとかわいそうだな..<br>
-            もし私からの謎がとけた時は工場でゼリーを作ることができるようにしよう!」</p>
+            もし私からの謎がとけた時は工場でゼリーを作ることができるようにしよう！」</p>
         <p>校長「私の謎はむずかしいぞ！解けるものなら解いてみろ！」</p>
         <p>しかし校長の力作の謎たちは生徒たちにあっさりと解かれてしまいます。<br>
             正体がばれてしまった校長は、ふかい悲しみに包まれるのでした。</p>
@@ -387,7 +387,7 @@
         <p>校長先生の顔に笑顔が広がります</p>
         <p>生徒「校長先生はいそがしいから、いつもいっしょに食べるのはむずかしいけど、<br>
             さみしいときはいっしょに食べようよ！」</p>
-        <p>校長「いいのかい...?ありがとう！！」</p>
+        <p>校長「いいのかい...？ありがとう！！」</p>
         <p>こうして校長先生はおなかだけでなく、心も幸せでいっぱいになったのでした。</p>
         <div class="w-75 mx-auto" style="height: 100vh;">
             <img class="h-100" src="img/end-apple.png" v-if="fruit_name == 'りんご' || fruit_name == ''">
@@ -403,7 +403,7 @@
             el: '#main',
             data: {
                 fruit_name: '',
-                fruit_message: '材料を決めよう！',
+                fruit_message: '材料を決めよう',
                 memo: '',
                 hint_stage1: 11,
                 hint_toggle: {
@@ -504,7 +504,7 @@
                 },
                 fruit(name) {
                     this.fruit_name = name;
-                    this.fruit_message = name + 'に決めた！'
+                    this.fruit_message = name + 'に決めた'
                 },
                 hintMessage(i, m) {
                     const div = document.getElementById('hint');
@@ -515,57 +515,57 @@
                 hint(num) {
                     switch (num) {
                         case 1:
-                            this.hintMessage('player', 'ステージ1のヒントを教えて！');
+                            this.hintMessage('player', 'ステージ１のヒントを教えて！');
                             break;
                             case 10:
-                            this.hintMessage('player', 'ステージ1を教えて！');
-                                this.hintMessage('game', '困ったら検索をしてもいいかも！<br>わからない問題があったら聞いてね');
+                            this.hintMessage('player', 'ステージ１を教えて！');
+                                this.hintMessage('game', '困ったら検索をしてもいいかも！<br>わからない問題があったら聞いてね！');
                             break;
                             case 11:
-                                this.hintMessage('player', '1問目を教えて！');
-                                this.hintMessage('game', '1問目は横は「ぶどう」、縦は「ぶた」だよ');
+                                this.hintMessage('player', '１問目を教えて！');
+                                this.hintMessage('game', '１問目は横は「ぶどう」、縦は「ぶた」だよ');
                                 break; case 12:
-                                this.hintMessage('player', '2問目を教えて！');
-                                this.hintMessage('game', '2問目は「ドイツ」だよ');
+                                this.hintMessage('player', '２問目を教えて！');
+                                this.hintMessage('game', '２問目は「ドイツ」だよ');
                                 break; case 13:
-                                this.hintMessage('player', '3問目を教えて！');
-                                this.hintMessage('game', '3問目は「ウシ」だよ');
+                                this.hintMessage('player', '３問目を教えて！');
+                                this.hintMessage('game', '３問目は「ウシ」だよ');
                                 break; case 14:
-                                this.hintMessage('player', '4問目を教えて！');
-                                this.hintMessage('game', '4問目は「かき」だよ');
+                                this.hintMessage('player', '４問目を教えて！');
+                                this.hintMessage('game', '４問目は「かき」だよ');
                                 break; case 15:
-                                this.hintMessage('player', '5問目を教えて！');
-                                this.hintMessage('game', '5問目は「たいしかん」だよ');
+                                this.hintMessage('player', '５問目を教えて！');
+                                this.hintMessage('game', '５問目は「たいしかん」だよ');
                                 break; case 16:
-                                this.hintMessage('player', '6問目を教えて！');
-                                this.hintMessage('game', '6問目は「かこ」だよ');
+                                this.hintMessage('player', '６問目を教えて！');
+                                this.hintMessage('game', '６問目は「かこ」だよ');
                                 break; case 17:
-                                this.hintMessage('player', '7問目を教えて！');
-                                this.hintMessage('game', '7問目は「こさめ」だよ');
+                                this.hintMessage('player', '７問目を教えて！');
+                                this.hintMessage('game', '７問目は「こさめ」だよ');
                                 break; case 18:
-                                this.hintMessage('player', '8問目を教えて！');
-                                this.hintMessage('game', '8問目は「メキシコ」だよ');
+                                this.hintMessage('player', '８問目を教えて！');
+                                this.hintMessage('game', '８問目は「メキシコ」だよ');
                                 break; case 19:
-                                this.hintMessage('player', '9問目を教えて！');
-                                this.hintMessage('game', '9問目は「しじん」だよ');
+                                this.hintMessage('player', '９問目を教えて！');
+                                this.hintMessage('game', '９問目は「しじん」だよ');
                                 break; case 110:
-                                this.hintMessage('player', '10問目を教えて！');
-                                this.hintMessage('game', '10問目は「しゃか」だよ');
+                                this.hintMessage('player', '１０問目を教えて！');
+                                this.hintMessage('game', '１０問目は「しゃか」だよ');
                                 break; case 111:
-                                this.hintMessage('player', '11問目を教えて！');
-                                this.hintMessage('game', '11問目は「つき」だよ');
+                                this.hintMessage('player', '１１問目を教えて！');
+                                this.hintMessage('game', '１１問目は「つき」だよ');
                                 break; case 112:
-                                this.hintMessage('player', '12問目を教えて！');
-                                this.hintMessage('game', '12問目は「じしゃく」だよ');
+                                this.hintMessage('player', '１２問目を教えて！');
+                                this.hintMessage('game', '１２問目は「じしゃく」だよ');
                                 break; case 113:
-                                this.hintMessage('player', '13問目を教えて！');
-                                this.hintMessage('game', '13問目は「くま」だよ');
+                                this.hintMessage('player', '１３問目を教えて！');
+                                this.hintMessage('game', '１３問目は「くま」だよ');
                                 break; case 114:
-                                this.hintMessage('player', '14問目を教えて！');
-                                this.hintMessage('game', '14問目は「かまぼこ」だよ');
+                                this.hintMessage('player', '１４問目を教えて！');
+                                this.hintMessage('game', '１４問目は「かまぼこ」だよ');
                                 break;
                         case 2:
-                            this.hintMessage('player', 'ステージ2のヒントを教えて！');
+                            this.hintMessage('player', 'ステージ２のヒントを教えて！');
                             this.hintMessage('game', '最後まで残る文字は3文字だよ');
                             break;
                         case 21:
@@ -573,7 +573,7 @@
                             this.hintMessage('game', '答えは「おとな」のようだよ');
                             break;
                         case 3:
-                            this.hintMessage('player', 'ステージ3のヒントを教えて！');
+                            this.hintMessage('player', 'ステージ３のヒントを教えて！');
                             this.hintMessage('game', 'まちがいは上半分に1つ、下半分に3つあるよ');
                             break;
                         case 31:
@@ -581,7 +581,7 @@
                             this.hintMessage('game', '答えは「りーだー」のようだよ');
                             break;
                         case 4:
-                            this.hintMessage('player', 'ステージ4のヒントを教えて！');
+                            this.hintMessage('player', 'ステージ４のヒントを教えて！');
                             this.hintMessage('game', '同じ記号には同じ文字が入るよ');
                             break;
                         case 41:
